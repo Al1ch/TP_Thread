@@ -1,10 +1,33 @@
 package Exercice1;
 
-public class TestCompte {
+public class TestCompte{
+
     public static void main(String[] args) {
-        Compte compte1 = new Compte();
-        Depot depot = new Depot(compte1,10);
-        Retrait retrait = new Retrait(compte1,30);
+
+        Compte compte = new Compte(100);
+        Thread depot = new Thread(new Runnable() {
+            @Override
+            synchronized public void run() {
+                System.out.println(compte.getSolde());
+                for(int i=0; i<5; i++){
+                    compte.depot(10);
+                    System.out.println("Solde apres depot" + compte.getSolde());
+                }
+
+            }
+        });
+        Thread retrait = new Thread(new Runnable() {
+            @Override
+            synchronized public void run() {
+
+                System.out.println(compte.getSolde());
+                for(int i=0; i<5; i++){
+                    compte.retrait(10);
+                    System.out.println("Solde apres retrait" + compte.getSolde());
+
+                }
+            }
+        });
 
         retrait.start();
         depot.start();
