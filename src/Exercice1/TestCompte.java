@@ -19,7 +19,6 @@ public class TestCompte{
         Thread retrait = new Thread(new Runnable() {
             @Override
             synchronized public void run() {
-
                 System.out.println(compte.getSolde());
                 for(int i=0; i<5; i++){
                     compte.retrait(10);
@@ -28,9 +27,9 @@ public class TestCompte{
                 }
             }
         });
-
-        retrait.start();
         depot.start();
+        retrait.start();
+
 
         try {
             depot.join();
