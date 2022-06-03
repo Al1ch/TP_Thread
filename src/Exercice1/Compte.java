@@ -1,7 +1,7 @@
 package Exercice1;
 import java.lang.Thread;
 
-public class Compte extends Thread{
+public class Compte{
     private int solde;
 
     public Compte(int solde_initial) {
@@ -12,11 +12,11 @@ public class Compte extends Thread{
         return solde;
     }
 
-    synchronized public void retrait(int montant){
+    public void retrait(int montant){
         this.solde -= montant;
     }
 
-    synchronized public void depot(int montant){
+    public void depot(int montant){
         this.solde += montant;
     }
 }
