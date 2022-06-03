@@ -1,5 +1,5 @@
 package Exercice1;
-
+import java.lang.Thread;
 public class TestCompte{
 
     public static void main(String[] args) {
@@ -16,6 +16,7 @@ public class TestCompte{
 
             }
         });
+
         Thread retrait = new Thread(new Runnable() {
             @Override
             synchronized public void run() {
@@ -27,10 +28,9 @@ public class TestCompte{
                 }
             }
         });
+
         depot.start();
         retrait.start();
-
-
         try {
             depot.join();
             retrait.join();

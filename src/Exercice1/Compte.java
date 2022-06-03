@@ -1,6 +1,5 @@
 package Exercice1;
 import java.lang.Thread;
-import java.util.Comparator;
 
 public class Compte extends Thread{
     private int solde;
