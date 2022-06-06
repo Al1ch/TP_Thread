@@ -1,5 +1,7 @@
 package Exercice2;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Marwan extends Thread{
 
     public void petit_dej(){
@@ -32,10 +34,14 @@ public class Marwan extends Thread{
 
     public static void main(String[] args) {
         Marwan m = new Marwan();
-        Thread t1 = new Thread(new Runnable() {
+
+        //créer les thread pour chaque actions
+        Thread t_dejeuner = new Thread(new Runnable() {
             @Override
             public void run() {
-
+                synchronized (m){
+                    m.petit_dej();
+                }
             }
         });
     }

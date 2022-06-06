@@ -6,28 +6,22 @@ public class TestCompte{
 
         Compte compte = new Compte(100);
 
-        Thread depot = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized(compte) {
-                    System.out.println(compte.getSolde());
-                    for (int i = 0; i < 5; i++) {
-                        compte.depot(10);
-                        System.out.println("Solde apres depot" + compte.getSolde());
-                    }
+        Thread depot = new Thread(() -> {
+            synchronized(compte) {
+                System.out.println(compte.getSolde());
+                for (int i = 0; i < 5; i++) {
+                    compte.depot(10);
+                    System.out.println("Solde apres depot" + compte.getSolde());
                 }
             }
         });
 
-        Thread retrait = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (compte) {
-                    System.out.println(compte.getSolde());
-                    for (int i = 0; i < 5; i++) {
-                        compte.retrait(10);
-                        System.out.println("Solde apres retrait" + compte.getSolde());
-                    }
+        Thread retrait = new Thread(() -> {
+            synchronized (compte) {
+                System.out.println(compte.getSolde());
+                for (int i = 0; i < 5; i++) {
+                    compte.retrait(10);
+                    System.out.println("Solde apres retrait" + compte.getSolde());
                 }
             }
         });

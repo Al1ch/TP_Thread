@@ -1,5 +1,4 @@
 package Exercice1;
-import java.lang.Thread;
 
 public class Compte{
     private int solde;
