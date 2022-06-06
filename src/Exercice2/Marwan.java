@@ -36,12 +36,9 @@ public class Marwan extends Thread{
         Marwan m = new Marwan();
 
         //créer les thread pour chaque actions
-        Thread t_dejeuner = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (m){
-                    m.petit_dej();
-                }
+        Thread t_dejeuner = new Thread(() -> {
+            synchronized (m){
+                m.petit_dej();
             }
         });
     }
